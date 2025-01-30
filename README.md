@@ -1,5 +1,6 @@
 # MusiKumiLove
 
+## **Instructions**
 To create a program that reads a music sheet in PDF format, plays the music aloud, and optionally adds correct fingering for an instrument like the oboe, Python is an excellent choice. Here's why and how you can approach this project:
 
 ## **Why Python?**
