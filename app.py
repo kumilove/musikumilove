@@ -18,7 +18,7 @@ if __name__ == '__main__':
     app.run()
 
 app.config['UPLOAD_FOLDER'] = './testcases/uploaded_pdfs'
-app.config['ALLOWED_EXTENSIONS'] = {'pdf'}
+app.config['ALLOWED_EXTENSIONS'] = {'pdf, png, jpg, jpeg'}
 
 
 def allowed_file(filename):
@@ -40,7 +40,7 @@ def upload():
                 print('--------------------IMAGE MUST HAVE A FILE NAME--------------------')
                 return redirect(request.url)
             if not allowed_file(pdf.filename):
-                print('--------------------ONLY PDF FILES ARE ALLOWED--------------------')
+                print('--------------------ONLY PDF, PNG, JPG, AND JPEG ARE ALLOWED--------------------')
                 return redirect(request.url)
             pdf.save(os.path.join(app.config['UPLOAD_FOLDER'], pdf.filename))
             print('--------------------IMAGED SAVED--------------------')
