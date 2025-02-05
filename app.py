@@ -4,9 +4,29 @@ import os
 app = Flask(__name__)
 
 
-@app.route('/')
-def index():
-    return 'Hello World!'
+@app.route('/', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST':
+
+        if request.files:
+
+            image = request.files['image']
+
+            if image.filename == '':
+                print('--------------------IMAGE MUST HAVE A FILE NAME--------------------')
+                return redirect(request.url)
+
+            if not allowed_file(image.filename):
+                print('--------------------ONLY PDF, PNG, JPG, AND JPEG ARE ALLOWED--------------------')
+                return redirect(request.url)
+
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
+
+            print('--------------------IMAGED SAVED TO /testcases/uploaded_images/--------------------')
+
+            return redirect(request.url)
+
+    return render_template('index.html')
 
 
 @app.route('/about')
@@ -31,28 +51,3 @@ def allowed_file(filename):
         return True
     else:
         return False
-
-
-@app.route('/upload-image', methods=['GET', 'POST'])
-def upload():
-    if request.method == 'POST':
-
-        if request.files:
-
-            image = request.files['image']
-
-            if image.filename == '':
-                print('--------------------IMAGE MUST HAVE A FILE NAME--------------------')
-                return redirect(request.url)
-
-            if not allowed_file(image.filename):
-                print('--------------------ONLY PDF, PNG, JPG, AND JPEG ARE ALLOWED--------------------')
-                return redirect(request.url)
-
-            image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
-
-            print('--------------------IMAGED SAVED TO /testcases/uploaded_images/--------------------')
-            
-            return redirect(request.url)
-
-    return render_template('index.html')
