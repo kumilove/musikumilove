@@ -51,7 +51,7 @@ def upload():
 
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
 
-            print('--------------------IMAGED SAVED--------------------')
+            print('--------------------IMAGED SAVED TO /testcases/uploaded_images/--------------------')
             
             return redirect(request.url)
 
