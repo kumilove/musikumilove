@@ -17,8 +17,8 @@ def about():
 if __name__ == '__main__':
     app.run()
 
-app.config['UPLOAD_FOLDER'] = './testcases/uploaded_pdfs'
-app.config['ALLOWED_EXTENSIONS'] = {'pdf, png, jpg, jpeg'}
+app.config['UPLOAD_FOLDER'] = './testcases/uploaded_images'
+app.config['ALLOWED_EXTENSIONS'] = {'pdf', 'png', 'jpg', 'jpeg'}
 
 
 def allowed_file(filename):
@@ -27,29 +27,29 @@ def allowed_file(filename):
 
     ext = filename.rsplit('.', 1)[1]
 
-    if ext in app.config['ALLOWED_EXTENSIONS']:
+    if ext.lower() in app.config['ALLOWED_EXTENSIONS']:
         return True
     else:
         return False
 
 
-@app.route('/upload-pdf', methods=['GET', 'POST'])
+@app.route('/upload-image', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
 
         if request.files:
 
-            pdf = request.files['pdfFile']
+            image = request.files['image']
 
-            if pdf.filename == '':
+            if image.filename == '':
                 print('--------------------IMAGE MUST HAVE A FILE NAME--------------------')
                 return redirect(request.url)
 
-            if not allowed_file(pdf.filename):
+            if not allowed_file(image.filename):
                 print('--------------------ONLY PDF, PNG, JPG, AND JPEG ARE ALLOWED--------------------')
                 return redirect(request.url)
 
-            pdf.save(os.path.join(app.config['UPLOAD_FOLDER'], pdf.filename))
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
 
             print('--------------------IMAGED SAVED--------------------')
             
