@@ -53,6 +53,7 @@ def convert_midi_to_mp3_bear(midi_file, mp3_file):
     if (downloadResponse.status_code == 200):
         with open(mp3_file, 'wb') as f:
             f.write(downloadResponse.content)
+            print("Download done")
     else:
         print(f"Failed to download the file. Status code: {downloadResponse.status_code}")
 
