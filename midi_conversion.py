@@ -5,12 +5,12 @@ import urllib.parse
 
 def convert_midi_to_mp3_bear(midi_file, mp3_file):
     upload_url = 'https://cts.ofoct.com/upload.php'
-    convert_url = 'https://cts.ofoct.com/convert-file_v2.php'
+    convert_url = 'https://cts.ofoct.com/midi2mp3_convert.php'
 
     #Uploading midi to bearaudiotool
     with open(midi_file, 'rb') as f:
         files = {
-            'myfile': (midi_file, f, 'audio/midi')
+            'myfile': (midi_file, f, 'audio/mid')
         }
         data = {}
 
@@ -21,9 +21,7 @@ def convert_midi_to_mp3_bear(midi_file, mp3_file):
     if response.status_code == 200:
         print("Converting...")
         params = {
-            'cid': 'midi2audio',
-            'output': 'MP3,WAV,OGG,AAC,WMA',
-            'tmpfpath': response.text[2:-2],  
+            'tmpfpath': temp_file_name,
             'row': 'file1',
             'sourcename': os.path.basename(midi_file),  
             'outformat': 'mp3', 
@@ -31,6 +29,11 @@ def convert_midi_to_mp3_bear(midi_file, mp3_file):
             'AudioEncoder': '1',
             'AudioSamplingRate': '11',
             'AudioChannels': '1',
+            'soundfont': 'fluidr3_gm',
+            'adjust_volume': '100',
+            'adjust_drum_power': '100',
+            'adjust_tempo': '100',
+            'adjust_key': '0',
             'rowid': 'file1',
         }
         clickResponse = requests.get(convert_url, params=params)
@@ -43,11 +46,12 @@ def convert_midi_to_mp3_bear(midi_file, mp3_file):
         return
           
 
-
     #Downloads the mp3
     file_name = urllib.parse.quote(os.path.basename(midi_file))
+    mp3_file_name = urllib.parse.quote(os.path.basename(mp3_file))
 
-    download_url = f'https://cts.ofoct.com/get-file.php?type=get&genfpath=/tmp/{temp_file_name}.mp3&downloadsavename={file_name}.mp3'
+    download_url = f"https://cts.ofoct.com/get-file.php?type=get&genfpath=/tmp/{temp_file_name}.mp3&amp;downloadsavename={mp3_file}"
+
     downloadResponse = requests.get(download_url)
 
     if (downloadResponse.status_code == 200):
