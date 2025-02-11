@@ -63,7 +63,15 @@ def convert_midi_to_mp3_bear(midi_file, mp3_file):
 
 
 if __name__ == "__main__":
-    midi_file = 'miditest/Mizore and Ririka Oboe Duet.mid'
-    mp3_file = 'miditest/Mizore and Ririka Oboe Duet.mp3'
+    midiFile = [f for f in os.listdir("./") if f.endswith(".mid")]
+
+    if midiFile:
+        midi_file_path = os.path.join("./", midiFile[0])
+
+    midi_file = f'{midi_file_path}'
+    midi_file_name = os.path.basename(midi_file)[:-3] + 'mp3'
+    mp3_file = f'output/{midi_file_name}'
 
     convert_midi_to_mp3_bear(midi_file, mp3_file)
+
+    os.remove(midi_file_path)
