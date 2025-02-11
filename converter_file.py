@@ -1,4 +1,4 @@
-from music21 import converter
+    from music21 import converter
 
 score = converter.parse("./testcases/Mizore and Ririka Oboe Duet.mxl")
 
