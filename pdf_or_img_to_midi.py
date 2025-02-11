@@ -58,6 +58,6 @@ def convert_to_midi(input_path, midi_filename):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python convert_pdf_to_midi.py <input_file_path> <output_midi_filename>")
+        print("Usage: python pdf_or_img_to_midi.py <input_file_path> <output_midi_filename>")
     else:
         convert_to_midi(sys.argv[1], sys.argv[2])
