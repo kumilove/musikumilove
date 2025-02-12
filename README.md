@@ -16,8 +16,7 @@ or
 source env/bin/Activate.ps1
 ```
 if you are running on a Windows machine.
-
-    - To deactivate the server, simply type `deactivate` to deactivate it.
+(To deactivate the server, simply type `deactivate` to deactivate it.)
 
 3. Your terminal should now have the `(env)` before your prompt, indicating that you have successfully entered the Python virtual environment.
 
