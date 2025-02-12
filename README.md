@@ -7,7 +7,7 @@ python -m venv env
 ```
 This command creates an isolated and controlled Python environment for this project. With this environment, you should not have any dependency or system issues regarding this project. Wait for the command to complete.
 
-2. Then, run:
+2. Then, run
 ```
 source env/bin/activate
 ```
@@ -16,6 +16,7 @@ or
 source env/bin/Activate.ps1
 ```
 if you are running on a Windows machine.
+
     - To deactivate the server, simply type `deactivate` to deactivate it.
 
 3. Your terminal should now have the `(env)` before your prompt, indicating that you have successfully entered the Python virtual environment.
