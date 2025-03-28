@@ -63,10 +63,10 @@ def convert_midi_to_mp3_bear(midi_file, mp3_file):
 
 
 if __name__ == "__main__":
-    midiFile = [f for f in os.listdir("./") if f.endswith(".mid")]
+    midiFile = [f for f in os.listdir("../data/interim") if f.endswith(".mid")]
 
     if midiFile:
-        midi_file_path = os.path.join("./", midiFile[0])
+        midi_file_path = os.path.join("../data/interim", midiFile[0])
 
     midi_file = f'{midi_file_path}'
     midi_file_name = os.path.basename(midi_file)[:-3] + 'mp3'
