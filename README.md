@@ -33,6 +33,8 @@ pip install flask
 
 to install the Flask packages required to deploy the server.
 
+    - If you want, you can run ```pip install -r requirements.txt``` to install the necessary packages to run the Python files yourself
+
 6. Navigate to the ```src``` directory. Inside it, run 
 ```
 export FLASK_APP=app.py
