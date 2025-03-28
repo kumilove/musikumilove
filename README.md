@@ -33,7 +33,7 @@ pip install flask
 
 to install the Flask packages required to deploy the server.
 
-6. Run 
+6. Navigate to the ```src``` directory. Inside it, run 
 ```
 export FLASK_APP=app.py
 ```
@@ -44,7 +44,7 @@ setup FLASK_APP=app.py
 
 if on a Windows machine, to import environmental variables into `app.py` when you later attempt to deploy the server.
 
-7. Finally, run 
+7. Finally (whilst still in the ```src``` directory), run 
 ```
 flask run
 ```
