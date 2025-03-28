@@ -31,9 +31,13 @@ to ensure that you have the latest `pip` version.
 pip install flask
 ``` 
 
-to install the Flask packages required to deploy the server.
+to install the Flask packages required to deploy the server.__
 
-    - If you want, you can run ```pip install -r requirements.txt``` to install the necessary packages to run the Python files yourself
+If you want, you can run 
+```
+pip install -r requirements.txt
+```
+to install the necessary packages to run the Python files yourself
 
 6. Navigate to the ```src``` directory. Inside it, run 
 ```
